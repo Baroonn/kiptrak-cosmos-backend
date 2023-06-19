@@ -7,7 +7,7 @@ const uploader = require("./multer");
 const app = express();
 const options = require('./swagger');
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 80;
 
 app.use(express.json());
 

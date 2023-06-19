@@ -1,0 +1,8 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/0e6e70d5-d3ca-402e-985e-6ea25d99f006/resourceGroups/kiptrak/providers/Microsoft.Web/sites/kiptrak",
+    "appService.deploySubpath": ".",
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ]
+}

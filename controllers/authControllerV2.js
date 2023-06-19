@@ -70,7 +70,11 @@ const createUser = async (req, res, next) => {
         }
         var duplicateMessage = await checkForExistingUser(queries.getUserByUsername, username, "username");
         duplicateMessage += `\n${await checkForExistingUser(queries.getUserByEmail, email, "email")}`;
-        duplicateMessage += `\n${await checkForExistingUser(queries.getUserByPhone, phonenumber, "phone")}`;
+
+        if(phonenumber != ""){
+            duplicateMessage += `\n${await checkForExistingUser(queries.getUserByPhone, phonenumber, "phone")}`;
+        }
+        
         if (duplicateMessage.trim() !== "") {
             res.status(400);
             throw new Error(duplicateMessage.trim());
@@ -242,7 +246,7 @@ function generateAccessToken(user) {
 
 async function generateVCode(user) {
     var vcode = Math.floor(100000 + Math.random() * 900000);
-    var vcodeexpirydate = created;
+    var vcodeexpirydate = new Date();
     vcodeexpirydate.setHours(vcodeexpirydate.getHours() + 1);
     user.vCode = vcode;
     user.vCodeExpiryDate = vcodeexpirydate;
